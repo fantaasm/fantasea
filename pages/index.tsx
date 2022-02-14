@@ -9,6 +9,9 @@ import flightTrackerPng from "../public/flight-tracker.png";
 import mazeRunnerPng from "../public/maze-runner.png";
 import cdPng from "../public/cd.png";
 import {DynamicGrid} from "../components/DynamicGrid";
+import ToastButton from "../components/ToastButton";
+import {Technologies} from "../utils/mappings";
+import {motion} from 'framer-motion';
 
 
 const Home: NextPage = () => {
@@ -25,11 +28,24 @@ const Home: NextPage = () => {
               content="initial-scale=1, width=device-width" />
       </Head>
 
-      <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center"}>
-        <h1 className={"text-4xl md:text-6xl"}>Hi</h1>
-        <h1 className={"p-8 text-center text-xl md:text-3xl"}>I'm fantasm and im a passionate dev from Poland. My favorite stack is React(Next), ASP Core, Tailwind
-                                                              CSS. Currently im working on Maze Runner. Check out some stuff i did down below</h1>
-        <div className={"border-b-2 border-white w-1/2"} />
+      <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center drop-shadow-lg"}>
+        <motion.div initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.5, delay: 0.2}}
+                    className={"text-4xl md:text-6xl"}>Hi
+        </motion.div>
+
+        <motion.div initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 0.5, delay: 0.8}}
+                    className={"p-8 text-center text-xl md:text-3xl  bg-lightDark bg-opacity-75 rounded-xl flex flex-col gap-2"}>
+          <span>I&apos;m fantasm, and I am a passionate dev from Poland</span>
+          <span>My favorite stack includes React, TypeScript, ASP Core and Tailwind</span>
+          <span>Currently, I&apos;m working on <Link href={"/maze-runner"}><a className={"text-sky-400 hover:underline hover:decoration-1 hover:underline-offset-4"}>Maze Runner</a></Link></span>
+          <span>Check out some things I&apos;ve done below</span>
+        </motion.div>
+
+        <div className={"border-b-2 border-white w-1/2 mt-4"} />
         <h1 className={"text-xl md:text-2xl"}>Web</h1>
 
         <DynamicGrid maxColumns={2}>
@@ -38,7 +54,7 @@ const Home: NextPage = () => {
             <a>
               <ProjectContainer title={"Flight Tracker"}
                                 description={"App made to track planes in real time and display data on interactive map"}
-                                stack={["React", "ASP Net Core", "SQL Server"]}
+                                stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
                                 bgImg={flightTrackerPng} />
             </a>
           </Link>
@@ -46,8 +62,8 @@ const Home: NextPage = () => {
                 prefetch={false}>
             <a>
               <ProjectContainer title={"Killing floor 2"}
-                                description={"App dedicated to mod Controlled Difficulty in game Killing Floor 2"}
-                                stack={["React", "ASP Net Core", "SQL Server"]}
+                                description={"App dedicated to mod Controlled Difficulty in Killing Floor 2"}
+                                stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
                                 bgImg={flightTrackerPng} />
             </a>
 
@@ -60,43 +76,34 @@ const Home: NextPage = () => {
             <a>
               <ProjectContainer title={"Maze Runner"}
                                 description={"Stand alone game where player is challenged to beat obstacle course in shortest amount of time"}
-                                stack={["Unity", "C#"]}
+                                stack={[Technologies.unity, Technologies.cSharp]}
                                 bgImg={mazeRunnerPng} />
             </a>
           </Link>
-          <Link href={"/cd"}>
+          <Link href={"/controlled-difficulty"}>
             <a>
               <ProjectContainer title={"Controlled Difficulty"}
-                                description={"Mod to game Killing Floor 2 allowing player to set specific difficulty parameters"}
-                                stack={["UnrealEngine", "UnrealScript"]}
+                                description={"Mod to game Killing Floor 2 allowing player to set desired difficulty parameters"}
+                                stack={[Technologies.unrealEngine]}
                                 bgImg={cdPng} />
-            </a>
-          </Link>
-        </DynamicGrid>
-        <div className={"border-b-2 border-white w-1/2"} />
-        <h1 className={"text-2xl"}>Other</h1>
-        <DynamicGrid maxColumns={1}>
-          <Link href={"https://flight-radar.vercel.app/"}
-                prefetch={false}>
-            <a>
-              <ProjectContainer title={"Tutorial Island script"}
-                                description={"Most popular tutorial island script used on Dreambot with over 12k downloads"}
-                                stack={["Java"]}
-                                bgImg={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/270px-The_Earth_seen_from_Apollo_17.jpg"} />
             </a>
           </Link>
         </DynamicGrid>
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-xl md:text-2xl"}>Contact me</h1>
         <div className={"flex flex-col sm:flex-row gap-4 p-4 justify-center"}>
-          <button className={"border-2 border-red-800 p-2 rounded-3xl hover:rounded-none hover:bg-red-800 transition-all duration-500 ease-out inline-flex"}
-                  onClick={copyValue}><CgMail size={24}
-                                              className={"mr-1"} />carnageepl@gmail.com
-          </button>
-          <button className={"border-2 border-sky-600 p-2 rounded-3xl hover:rounded-none hover:bg-sky-600 transition-all duration-500 ease-out inline-flex"}
-                  onClick={copyValue}><FaDiscord size={24}
-                                                 className={"mr-1"} />fantasm#9591
-          </button>
+          <ToastButton css={"border-2 border-red-800 p-2 rounded-3xl hover:rounded-none hover:bg-red-800 transition-all duration-500 ease-out inline-flex w-56"}
+                       toast={"Copied to clipboard!"}
+                       onClick={copyValue}>
+            <CgMail size={24}
+                    className={"mr-1"} /> <span>carnageepl@gmail.com</span>
+          </ToastButton>
+          <ToastButton css={"border-2 border-sky-600 p-2 rounded-3xl hover:rounded-none hover:bg-sky-600 transition-all duration-500 ease-out inline-flex w-56"}
+                       toast={"Copied to clipboard!"}
+                       onClick={copyValue}>
+            <FaDiscord size={24}
+                       className={"mr-1"} /><span>fantasm#9591</span>
+          </ToastButton>
         </div>
       </main>
     </div>
