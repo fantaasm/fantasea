@@ -8,14 +8,17 @@ module.exports = {
       backgroundImage: {},
       fontFamily: {
         oxygen: ["Oxygen"],
-        roboto: ["Roboto"],
+        roboto: ["Roboto"]
       },
       colors: {
-        "dark1": "#0E1317",
-        lightPurple: "#BB86FC"
+        lightPurple: "#BB86FC",
+        dark:"#1A1A1A",
+        lightDark: "#2C2C2C"
       }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 
