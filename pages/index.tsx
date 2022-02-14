@@ -2,8 +2,8 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import ProjectContainer from "../components/ProjectContainer";
-import {FaDiscord} from 'react-icons/Fa';
-import {CgMail} from "react-icons/Cg";
+import {FaDiscord} from '@react-icons/all-files/Fa/FaDiscord';
+import {CgMail} from "@react-icons/all-files/Cg/CgMail";
 import React from "react";
 import flightTrackerPng from "../public/flight-tracker.png";
 import mazeRunnerPng from "../public/maze-runner.png";
