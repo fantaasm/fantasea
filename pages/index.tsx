@@ -31,13 +31,13 @@ const Home: NextPage = () => {
       <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center drop-shadow-lg"}>
         <motion.div initial={{opacity: 0}}
                     animate={{opacity: 1}}
-                    transition={{duration: 0.5, delay: 0.2}}
+                    transition={{duration: 0.5, delay: 0.1}}
                     className={"text-4xl md:text-6xl"}>Hi
         </motion.div>
 
         <motion.div initial={{opacity: 0}}
                     animate={{opacity: 1}}
-                    transition={{duration: 0.5, delay: 0.8}}
+                    transition={{duration: 0.5, delay: 0.3}}
                     className={"p-8 text-center text-xl md:text-3xl  bg-lightDark bg-opacity-75 rounded-xl flex flex-col gap-2"}>
           <span>I&apos;m fantasm, and I am a passionate dev from Poland</span>
           <span>My favorite stack includes React, TypeScript, ASP Core and Tailwind</span>
