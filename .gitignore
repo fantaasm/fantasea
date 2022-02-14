@@ -7,7 +7,6 @@
 #Yarn#
 .yarn
 .yarnrc.yml
-yarn.lock
 
 # dependencies
 /node_modules
