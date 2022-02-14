@@ -2,8 +2,6 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import ProjectContainer from "../components/ProjectContainer";
-import {FaDiscord} from '@react-icons/all-files/Fa/FaDiscord';
-import {CgMail} from "@react-icons/all-files/Cg/CgMail";
 import React from "react";
 import flightTrackerPng from "../public/flight-tracker.png";
 import mazeRunnerPng from "../public/maze-runner.png";
@@ -12,6 +10,8 @@ import {DynamicGrid} from "../components/DynamicGrid";
 import ToastButton from "../components/ToastButton";
 import {Technologies} from "../utils/mappings";
 import {motion} from 'framer-motion';
+import {FaDiscord} from "react-icons/fa";
+import {CgMail} from "react-icons/cg";
 
 
 const Home: NextPage = () => {
