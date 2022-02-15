@@ -6,6 +6,8 @@ import React from "react";
 import flightTrackerPng from "../public/flight-tracker.png";
 import mazeRunnerPng from "../public/maze-runner.png";
 import cdPng from "../public/cd.png";
+import crypto2fiat from "../public/cryptofiat.png";
+import iplocation from "../public/iplocation.png";
 import {DynamicGrid} from "../components/DynamicGrid";
 import ToastButton from "../components/ToastButton";
 import {Technologies} from "../utils/mappings";
@@ -19,13 +21,12 @@ const Home: NextPage = () => {
   const copyValue = async (event: React.MouseEvent): Promise<any> => await navigator.clipboard.writeText(event.target.innerText);
 
   return (
-    <div className={"container mx-auto text-color-primary"}>
+    <motion.div className={"container mx-auto text-color-primary"}>
       <Head>
         <title>Fantasm</title>
-        <meta name="description"
-              content="Personal fantasm web app" />
-        <meta name="viewport"
-              content="initial-scale=1, width=device-width" />
+        <meta name="description" content="Fantasm portfolio" />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="icon" type="image/png" href="/favIcon.png" />
       </Head>
 
       <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center drop-shadow-lg"}>
@@ -66,7 +67,24 @@ const Home: NextPage = () => {
                                 stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
                                 bgImg={flightTrackerPng} />
             </a>
-
+          </Link>
+          <Link href={"https://ip2geolocation.vercel.app/"}
+                prefetch={false}>
+            <a>
+              <ProjectContainer title={"IP Location"}
+                                description={"App made to show basic info and location of IP address"}
+                                stack={[Technologies.react, Technologies.next, Technologies.tailwind]}
+                                bgImg={iplocation} />
+            </a>
+          </Link>
+          <Link href={"https://crypto2fiat.vercel.app/"}
+                prefetch={false}>
+            <a>
+              <ProjectContainer title={"Crypto - Fiat Converter"}
+                                description={"App made to convert between value of crypto currencies and fiat currencies"}
+                                stack={[ Technologies.react,Technologies.next ]}
+                                bgImg={crypto2fiat} />
+            </a>
           </Link>
         </DynamicGrid>
         <div className={"border-b-2 border-white w-1/2"} />
@@ -106,7 +124,7 @@ const Home: NextPage = () => {
           </ToastButton>
         </div>
       </main>
-    </div>
+    </motion.div>
   )
 }
 
