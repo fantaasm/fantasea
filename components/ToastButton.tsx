@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {ReactElement, useState} from 'react';
 
 type Props = {
   children?: any
@@ -8,7 +8,7 @@ type Props = {
   toast: string;
 };
 
-const ToastButton = (props: Props) => {
+const ToastButton = (props: Props): ReactElement => {
   const [text, setText] = useState<string | null>(null);
 
   const showToast = (e: React.MouseEvent): void => {

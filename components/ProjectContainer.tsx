@@ -29,7 +29,10 @@ function ProjectContainer(props: Props): ReactElement {
       <Image className={hovered && "blur absolute -z-10 h-full w-full opacity-80" || "blur-0 absolute -z-10 h-full w-full opacity-80"}
              src={props.bgImg}
              alt={""}
-             layout={"fill"} />
+             layout={"fill"}
+             placeholder={"blur"}
+
+      />
       <div className={"flex flex-col justify-center items-center h-full gap-4 p-2"}>
         {!hovered && props.title && <h1 className={"text-color-primary tracking-wider text-2xl"}>{props.title}</h1>}
         {hovered && props.description && <span className={"text-color-primary"}>{props.description}</span>}

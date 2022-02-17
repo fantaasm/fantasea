@@ -5,6 +5,7 @@
 #images#
 
 #Yarn#
+yarn.lock
 .yarn
 .yarnrc.yml
 

@@ -8,7 +8,7 @@ import mazeRunnerPng from "../public/maze-runner.png";
 import cdPng from "../public/cd.png";
 import crypto2fiat from "../public/cryptofiat.png";
 import iplocation from "../public/iplocation.png";
-import {DynamicGrid} from "../components/DynamicGrid";
+import {ResponsiveGrid} from "../components/ResponsiveGrid";
 import ToastButton from "../components/ToastButton";
 import {Technologies} from "../utils/mappings";
 import {motion} from 'framer-motion';
@@ -26,6 +26,7 @@ const Home: NextPage = () => {
         <title>Fantasm</title>
         <meta name="description" content="Fantasm portfolio" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
         <link rel="icon" type="image/png" href="/favIcon.png" />
       </Head>
 
@@ -49,7 +50,7 @@ const Home: NextPage = () => {
         <div className={"border-b-2 border-white w-1/2 mt-4"} />
         <h1 className={"text-xl md:text-2xl"}>Web</h1>
 
-        <DynamicGrid maxColumns={2}>
+        <ResponsiveGrid maxColumns={2}>
           <Link href={"https://flight-radar.vercel.app/"}
                 prefetch={false}>
             <a>
@@ -86,10 +87,10 @@ const Home: NextPage = () => {
                                 bgImg={crypto2fiat} />
             </a>
           </Link>
-        </DynamicGrid>
+        </ResponsiveGrid>
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-2xl"}>Game</h1>
-        <DynamicGrid maxColumns={2}>
+        <ResponsiveGrid maxColumns={2}>
           <Link href={"/maze-runner"}>
             <a>
               <ProjectContainer title={"Maze Runner"}
@@ -106,7 +107,7 @@ const Home: NextPage = () => {
                                 bgImg={cdPng} />
             </a>
           </Link>
-        </DynamicGrid>
+        </ResponsiveGrid>
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-xl md:text-2xl"}>Contact me</h1>
         <div className={"flex flex-col sm:flex-row gap-4 p-4 justify-center"}>
