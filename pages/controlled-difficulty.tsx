@@ -10,7 +10,7 @@ export type ArticleLink = {
 
 export const cdLinks: ArticleLink[] = [
   {name: "Overview", link: "/controlled-difficulty"},
-  // {name: "Commands", link: "/controlled-difficulty/commands"},
+  {name: "Commands", link: "/controlled-difficulty/commands"},
   // {name: "Advanced Settings", link: "/controlled-difficulty/advanced"},
 ]
 

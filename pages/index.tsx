@@ -11,9 +11,10 @@ import iplocation from "../public/iplocation.png";
 import {ResponsiveGrid} from "../components/ResponsiveGrid";
 import ToastButton from "../components/ToastButton";
 import {Technologies} from "../utils/mappings";
-import {motion} from 'framer-motion';
+import {AnimatePresence, motion} from 'framer-motion';
 import {FaDiscord} from "react-icons/fa";
 import {CgMail} from "react-icons/cg";
+import Layout from "../components/Layout";
 
 
 const Home: NextPage = () => {
@@ -21,13 +22,12 @@ const Home: NextPage = () => {
   const copyValue = async (event: React.MouseEvent): Promise<any> => await navigator.clipboard.writeText(event.target.innerText);
 
   return (
-    <motion.div className={"container mx-auto text-color-primary"}>
+    <Layout >
       <Head>
         <title>Fantasm</title>
         <meta name="description" content="Fantasm portfolio" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
-        <link rel="icon" type="image/png" href="/favIcon.png" />
       </Head>
 
       <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center drop-shadow-lg"}>
@@ -52,6 +52,7 @@ const Home: NextPage = () => {
 
         <ResponsiveGrid maxColumns={2}>
           <Link href={"https://flight-radar.vercel.app/"}
+                scroll={false}
                 prefetch={false}>
             <a>
               <ProjectContainer title={"Flight Tracker"}
@@ -61,6 +62,7 @@ const Home: NextPage = () => {
             </a>
           </Link>
           <Link href={"https://flight-radar.vercel.app/"}
+                scroll={false}
                 prefetch={false}>
             <a>
               <ProjectContainer title={"Killing floor 2"}
@@ -70,6 +72,7 @@ const Home: NextPage = () => {
             </a>
           </Link>
           <Link href={"https://ip2geolocation.vercel.app/"}
+                scroll={false}
                 prefetch={false}>
             <a>
               <ProjectContainer title={"IP Location"}
@@ -79,6 +82,7 @@ const Home: NextPage = () => {
             </a>
           </Link>
           <Link href={"https://crypto2fiat.vercel.app/"}
+                scroll={false}
                 prefetch={false}>
             <a>
               <ProjectContainer title={"Crypto - Fiat Converter"}
@@ -91,7 +95,7 @@ const Home: NextPage = () => {
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-2xl"}>Game</h1>
         <ResponsiveGrid maxColumns={2}>
-          <Link href={"/maze-runner"}>
+          <Link href={"/maze-runner"} scroll={false}>
             <a>
               <ProjectContainer title={"Maze Runner"}
                                 description={"Stand alone game where player is challenged to beat obstacle course in shortest amount of time"}
@@ -99,7 +103,7 @@ const Home: NextPage = () => {
                                 bgImg={mazeRunnerPng} />
             </a>
           </Link>
-          <Link href={"/controlled-difficulty"}>
+          <Link href={"/controlled-difficulty"} scroll={false}>
             <a>
               <ProjectContainer title={"Controlled Difficulty"}
                                 description={"Mod to game Killing Floor 2 allowing player to set desired difficulty parameters"}
@@ -125,7 +129,7 @@ const Home: NextPage = () => {
           </ToastButton>
         </div>
       </main>
-    </motion.div>
+    </Layout>
   )
 }
 
