@@ -1,29 +1,26 @@
 import {useEffect, useState} from "react";
 import {NextPage} from "next";
-import {clearInterval} from "timers";
 import {NextRouter, useRouter} from "next/router";
 
 const ErrorPage: NextPage = () => {
   const [time, setTime] = useState<number>(5);
   const router: NextRouter = useRouter();
-
   useEffect(() => {
-    const interval = setInterval(decrementTimer,1000)
-    return () => clearInterval(interval);
-  }, [])
-
-  const decrementTimer = () => {
     if (time <= 0) {
-      router.push("/home");
+      router.push("/");
       return;
     }
-    setTime((currentTime: number) => currentTime - 1);
-  }
+    setTimeout(() => {
+      setTime((redirectSeconds) => redirectSeconds - 1);
+    }, 1000)
+  }, [time]);
 
   return (
-    <div className={"text-color-primary"}>
+    <div className={"flex h-96"}>
+      <div className={"m-auto"}>
       <p>Page not found</p>
       <p>Redirecting in {time}</p>
+      </div>
     </div>
   );
 }
