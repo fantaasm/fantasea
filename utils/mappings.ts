@@ -14,9 +14,3 @@ export class Technologies {
   static java: Technology = {color: "#fb923c",  text: "Java"}
   static sqlServer: Technology = {color: "#6b21a8",  text: "SQL Server"}
 }
-
-export enum projectType {
-  FullStack,
-  Mod,
-  Game
-}
