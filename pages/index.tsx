@@ -1,5 +1,4 @@
 import type {NextPage} from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 import ProjectContainer from "../components/ProjectContainer";
 import React from "react";
@@ -11,26 +10,21 @@ import iplocation from "../public/iplocation.png";
 import {ResponsiveGrid} from "../components/ResponsiveGrid";
 import ToastButton from "../components/ToastButton";
 import {Technologies} from "../utils/mappings";
-import {AnimatePresence, motion} from 'framer-motion';
 import {FaDiscord} from "react-icons/fa";
 import {CgMail} from "react-icons/cg";
 import Layout from "../components/Layout";
+import {motion} from 'framer-motion';
+import SocialLinks from "../components/SocialLinks";
 
+const title = "About"
+const description = "Personal page for Fantasm, dev"
 
 const Home: NextPage = () => {
 
-  const copyValue = async (event: React.MouseEvent): Promise<any> => await navigator.clipboard.writeText(event.target.innerText);
-
   return (
-    <Layout >
-      <Head>
-        <title>Fantasm</title>
-        <meta name="description" content="Fantasm portfolio" />
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
-      </Head>
-
-      <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center drop-shadow-lg"}>
+    <Layout title={title}
+            description={description}>
+      <main className={"flex flex-col gap-4 sm:p-4 mt-8 items-center content-center"}>
         <motion.div initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     transition={{duration: 0.5, delay: 0.1}}
@@ -43,7 +37,7 @@ const Home: NextPage = () => {
                     className={"p-8 text-center text-xl md:text-3xl  bg-lightDark bg-opacity-75 rounded-xl flex flex-col gap-2"}>
           <span>I&apos;m fantasm, and I am a passionate dev from Poland</span>
           <span>My favorite stack includes React, TypeScript, ASP Core and Tailwind</span>
-          <span>Currently, I&apos;m working on <Link href={"/maze-runner"}><a className={"text-sky-400 hover:underline hover:decoration-1 hover:underline-offset-4"}>Maze Runner</a></Link></span>
+          <span>Currently, I&apos;m working on <Link href={"/blog/maze-runner"}><a className={"text-sky-400 hover:underline hover:decoration-1 hover:underline-offset-4"}>Maze Runner</a></Link></span>
           <span>Check out some things I&apos;ve done below</span>
         </motion.div>
 
@@ -51,86 +45,56 @@ const Home: NextPage = () => {
         <h1 className={"text-xl md:text-2xl"}>Web</h1>
 
         <ResponsiveGrid maxColumns={2}>
-          <Link href={"https://flight-radar.vercel.app/"}
-                scroll={false}
-                prefetch={false}>
-            <a>
-              <ProjectContainer title={"Flight Tracker"}
-                                description={"App made to track planes in real time and display data on interactive map"}
-                                stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
-                                bgImg={flightTrackerPng} />
-            </a>
-          </Link>
-          <Link href={"https://flight-radar.vercel.app/"}
-                scroll={false}
-                prefetch={false}>
-            <a>
-              <ProjectContainer title={"Killing floor 2"}
-                                description={"App dedicated to mod Controlled Difficulty in Killing Floor 2"}
-                                stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
-                                bgImg={flightTrackerPng} />
-            </a>
-          </Link>
-          <Link href={"https://ip2geolocation.vercel.app/"}
-                scroll={false}
-                prefetch={false}>
-            <a>
-              <ProjectContainer title={"IP Location"}
-                                description={"App made to show basic info and location of IP address"}
-                                stack={[Technologies.react, Technologies.next, Technologies.tailwind]}
-                                bgImg={iplocation} />
-            </a>
-          </Link>
-          <Link href={"https://crypto2fiat.vercel.app/"}
-                scroll={false}
-                prefetch={false}>
-            <a>
-              <ProjectContainer title={"Crypto - Fiat Converter"}
-                                description={"App made to convert between value of crypto currencies and fiat currencies"}
-                                stack={[ Technologies.react,Technologies.next ]}
-                                bgImg={crypto2fiat} />
-            </a>
-          </Link>
+
+          <ProjectContainer title={"Flight Tracker"}
+                            link={"https://flight-radar.vercel.app/"}
+                            description={"App made to track planes in real time and display data on interactive map"}
+                            stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
+                            bgImg={flightTrackerPng} />
+
+          <ProjectContainer title={"Killing floor 2"}
+                            link={"https://flight-radar.vercel.app/"}
+                            description={"App dedicated to mod Controlled Difficulty in Killing Floor 2"}
+                            stack={[Technologies.react, Technologies.next, Technologies.tailwind, Technologies.asp]}
+                            bgImg={flightTrackerPng} />
+
+          <ProjectContainer title={"IP Location"}
+                            link={"https://ip2geolocation.vercel.app"}
+                            description={"App made to show basic info and location of IP address"}
+                            stack={[Technologies.react, Technologies.next, Technologies.tailwind]}
+                            bgImg={iplocation} />
+          <ProjectContainer title={"Crypto - Fiat Converter"}
+                            link={"https://crypto2fiat.vercel.app/"}
+                            description={"App made to convert between value of crypto currencies and fiat currencies"}
+                            stack={[Technologies.react, Technologies.next]}
+                            bgImg={crypto2fiat} />
+
         </ResponsiveGrid>
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-2xl"}>Game</h1>
         <ResponsiveGrid maxColumns={2}>
-          <Link href={"/maze-runner"} scroll={false}>
-            <a>
-              <ProjectContainer title={"Maze Runner"}
-                                description={"Stand alone game where player is challenged to beat obstacle course in shortest amount of time"}
-                                stack={[Technologies.unity, Technologies.cSharp]}
-                                bgImg={mazeRunnerPng} />
-            </a>
-          </Link>
-          <Link href={"/controlled-difficulty"} scroll={false}>
-            <a>
-              <ProjectContainer title={"Controlled Difficulty"}
-                                description={"Mod to game Killing Floor 2 allowing player to set desired difficulty parameters"}
-                                stack={[Technologies.unrealEngine]}
-                                bgImg={cdPng} />
-            </a>
-          </Link>
+
+          <ProjectContainer title={"Maze Runner"}
+                            link={"/blog/maze-runner"}
+                            description={"Stand alone game where player is challenged to beat obstacle course in shortest amount of time"}
+                            stack={[Technologies.unity, Technologies.cSharp]}
+                            bgImg={mazeRunnerPng} />
+
+          <ProjectContainer title={"Controlled Difficulty"}
+                            link={"/blog/controlled-difficulty"}
+                            description={"Mod to game Killing Floor 2 allowing player to set desired difficulty parameters"}
+                            stack={[Technologies.unrealEngine]}
+                            bgImg={cdPng} />
+
         </ResponsiveGrid>
         <div className={"border-b-2 border-white w-1/2"} />
         <h1 className={"text-xl md:text-2xl"}>Contact me</h1>
-        <div className={"flex flex-col sm:flex-row gap-4 p-4 justify-center"}>
-          <ToastButton css={"border-2 border-red-800 p-2 rounded-3xl hover:rounded-none hover:bg-red-800 transition-all duration-500 ease-out inline-flex w-56"}
-                       toast={"Copied to clipboard!"}
-                       onClick={copyValue}>
-            <CgMail size={24}
-                    className={"mr-1"} /> <span>carnageepl@gmail.com</span>
-          </ToastButton>
-          <ToastButton css={"border-2 border-sky-600 p-2 rounded-3xl hover:rounded-none hover:bg-sky-600 transition-all duration-500 ease-out inline-flex w-56"}
-                       toast={"Copied to clipboard!"}
-                       onClick={copyValue}>
-            <FaDiscord size={24}
-                       className={"mr-1"} /><span>fantasm#9591</span>
-          </ToastButton>
-        </div>
+        <SocialLinks />
       </main>
     </Layout>
   )
 }
+
+
 
 export default Home
