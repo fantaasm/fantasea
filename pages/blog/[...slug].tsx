@@ -25,7 +25,7 @@ const BlogPost: NextPage = ({page, externalLinks}: Props) => {
         gap-4 md:gap-0 
         sm:px-0 md:px-6 lg:px-32 xl:px-48 mt-4 md:mt-8 
         mx-auto max-w-8xl`}>
-        <ArticleLinks className={"mt-1 text-2xl"} links={externalLinks} active={page.name} />
+        <ArticleLinks className={"my-4 sm:mt-1 text-2xl"} links={externalLinks} active={page.name} />
         <article className={"prose prose-invert prose-xl px-1 md:px-2"} dangerouslySetInnerHTML={{__html: page.content}} />
         <ArticleLinks className={"hidden md:block text-xl mt-2"} links={page.internalLinks} internal={true}>
           <p className={"text-xl border-b border-slate-700 font-bold"}>On this page</p>

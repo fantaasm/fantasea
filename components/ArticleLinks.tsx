@@ -13,7 +13,7 @@ type Props = {
 const ArticleLinks = ({links, className, active, children,internal}: Props): JSX.Element => {
   return (
     <div className={className}>
-      <div className={`flex flex-col border-slate-500 ${active && "border-l"} gap-1 sm:gap-2`}>
+      <div className={`flex flex-col border-slate-500 ${active && "border-l"} gap-4 sm:gap-2`}>
         {children}
         {links.map((articleLink: ArticleLink, i: number) =>
           internal
