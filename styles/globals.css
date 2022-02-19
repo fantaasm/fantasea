@@ -11,15 +11,6 @@
     mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
 }
 
-.bg-darka {
-    background: #121212;
-}
-
-.text-color-primary {
-    color: white;
-    /*opacity: 87%;*/
-}
-
 .bg-purple-light {
     background: #BB86FC;
 }
