@@ -1,7 +1,7 @@
 import ToastButton from "./ToastButton";
 import {CgMail} from "react-icons/cg";
 import {FaDiscord} from "react-icons/fa";
-import {AiFillGithub} from "react-icons/Ai";
+import {AiFillGithub} from "react-icons/ai";
 import React from "react";
 
 const SocialLinks = (): JSX.Element => {
