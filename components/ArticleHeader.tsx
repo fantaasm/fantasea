@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import * as React from "react";
+import {shimmer, toBase64} from "../utils/imageHelper";
 
 type Props = {
  image: string | any
@@ -8,6 +8,7 @@ type Props = {
 }
 
 const ArticleHeader = ({image,headerText}: Props): JSX.Element => {
+
   return (
       <header className="w-full relative">
         <Image src={image}
@@ -16,7 +17,8 @@ const ArticleHeader = ({image,headerText}: Props): JSX.Element => {
                width={1900}
                height={350}
                quality={100}
-               // placeholder={"blur"}
+               placeholder={"blur"}
+               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
         />
         <div className="absolute h-16 pointer-events-none fixed bottom-0 z-20 w-full bg-gradient-to-t from-dark" />
         <div className={"absolute bottom-0 left-0 w-full h-16 bg-blur"} />
@@ -29,5 +31,6 @@ const ArticleHeader = ({image,headerText}: Props): JSX.Element => {
       </header>
   );
 }
+
 
 export default ArticleHeader
