@@ -2,15 +2,14 @@
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
+  removeConsole: process.env.NODE_ENV === "production",
+
   images: {
-    domains: [],
+    domains: ["media.graphcms.com"],
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

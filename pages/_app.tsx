@@ -1,15 +1,14 @@
-import '../styles/globals.css'
-import type {AppProps} from 'next/app'
-import {AnimatePresence} from "framer-motion";
-import Head from 'next/head'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { AnimatePresence } from "framer-motion";
+import Head from "next/head";
 import React from "react";
-import {DefaultSeo} from "next-seo";
+import { DefaultSeo } from "next-seo";
 import Footer from "../components/Footer";
 import FixedFadeToDark from "../components/FixedFadeToDark";
 
-
-function MyApp({Component, pageProps, router}: AppProps) {
-  const url = `https://fantasm.vercel.app${router.route}`
+function MyApp({ Component, pageProps, router }: AppProps) {
+  const url = `https://fantasm.vercel.app${router.route}`;
 
   return (
     <>
@@ -19,23 +18,26 @@ function MyApp({Component, pageProps, router}: AppProps) {
       <DefaultSeo
         titleTemplate="%s - Fantasm"
         openGraph={{
-          type: 'website',
-          locale: 'en_IE',
+          type: "website",
+          locale: "en_IE",
           url,
-          description: 'The personal website for Fantasm, developer.',
-          site_name: 'Fantasm | fantasm.vercel.app',
+          description: "The personal website for Fantasm, developer.",
+          site_name: "Fantasm | fantasm.vercel.app",
           images: [],
         }}
         canonical={url}
       />
-      <AnimatePresence exitBeforeEnter initial={true} onExitComplete={() => window.scrollTo(0, 0)}>
+      <AnimatePresence
+        exitBeforeEnter
+        initial={true}
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
         <Component {...pageProps} canonical={url} key={router.pathname} />
       </AnimatePresence>
-      <Footer/>
-      <FixedFadeToDark/>
+      <Footer />
+      <FixedFadeToDark />
     </>
-  )
-
+  );
 }
 
-export default MyApp
+export default MyApp;

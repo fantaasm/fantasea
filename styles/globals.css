@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 .font-roboto {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .bg-blur {
-    backdrop-filter: blur(12px);
-    mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+  backdrop-filter: blur(12px);
+  mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
 }
 
 .bg-purple-light {
-    background: #BB86FC;
+  background: #bb86fc;
 }

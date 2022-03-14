@@ -1,21 +1,37 @@
 export type ArticleLink = {
-  name: string
-  link: string
-  active?: boolean
-}
-
-export  type ArticlePage = {
-  name: string
-  url: string
-  headerTitle: string
-  description: string
-  internalLinks: ArticleLink[]
-  headerImg: string
-  content: string
-}
+  title: string;
+  slug: string;
+};
 
 export type Article = {
-  name: string
-  root: string
-  pages: ArticlePage[]
-}
+  name: string;
+  root: string;
+  pages: ArticlePage[];
+};
+
+export type Technology = {
+  name: string;
+  color: { hex: string };
+};
+export type Author = {
+  username: string;
+  bio: string;
+  picture: string;
+};
+
+export type Category = {
+  name: string;
+  slug: string;
+};
+
+export type ArticlePage = {
+  title: string;
+  headerTitle: string;
+  excerpt: string;
+  featuredImage: string;
+  author: Author;
+  createdAt: Date;
+  slug: string;
+  content: { html: string }; //raw
+  categories: Category[];
+};
