@@ -22,7 +22,7 @@ const ToastButton = ({
 
   return (
     <div onClick={showToast}>
-      <button className={className} onClick={onClick}>
+      <button className={className} onClick={onClick} type={"button"}>
         {(text !== null && text) || children}
       </button>
     </div>

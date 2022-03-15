@@ -28,10 +28,19 @@ export type ArticlePage = {
   title: string;
   headerTitle: string;
   excerpt: string;
-  featuredImage: string;
+  featuredImage: { url: string };
   author: Author;
   createdAt: Date;
   slug: string;
-  content: { html: string }; //raw
+  content: { html: string };
   categories: Category[];
+};
+
+export type Project = {
+  title: string;
+  description: string;
+  slug: string;
+  technologies: Technology[];
+  category: Category;
+  picture: { url: string };
 };

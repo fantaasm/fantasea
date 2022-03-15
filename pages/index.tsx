@@ -7,15 +7,21 @@ import Layout from "../components/Layout";
 import { motion } from "framer-motion";
 import SocialLinks from "../components/SocialLinks";
 import { getProjects } from "../services";
+import { Project } from "../types/types";
 
 const title = "About";
 const description = "Personal page for Fantasm, dev";
 
-type Props = {
-  projects: [];
+type GroupedProject = {
+  name: string;
+  projects: Project[];
 };
 
-const Home: NextPage = ({ projects }) => {
+type Props = {
+  projectsGrouped: GroupedProject[];
+};
+
+const Home = ({ projectsGrouped }: Props): JSX.Element => {
   return (
     <Layout title={title} description={description}>
       <main
@@ -33,6 +39,7 @@ const Home: NextPage = ({ projects }) => {
         </motion.div>
 
         <motion.div
+          role="header"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -68,8 +75,8 @@ const Home: NextPage = ({ projects }) => {
     </Layout>
   );
 
-  function Projects(): JSX.Element {
-    return projects.map((project, i) => {
+  function Projects(): JSX.Element[] {
+    return projectsGrouped.map((project, i) => {
       return (
         <React.Fragment key={i}>
           <h1 className={"text-xl md:text-2xl"}>{project.name}</h1>
@@ -96,23 +103,26 @@ const Home: NextPage = ({ projects }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const projects = await getProjects();
+  const projects: Project[] = await getProjects();
 
-  const projectsGrouped = projects.reduce((groups, item) => {
-    const index = groups.findIndex(
-      (group) => group.name === item.category.name
-    );
-    if (index > -1) {
-      groups[index].projects.push(item);
-    } else {
-      groups.push({ name: item.category.name, projects: [item] });
-    }
-    return groups;
-  }, []);
+  const projectsGrouped = projects.reduce(
+    (groups: GroupedProject[], item: Project) => {
+      const index = groups.findIndex(
+        (group) => group.name === item.category.name
+      );
+      if (index > -1) {
+        groups[index].projects.push(item);
+      } else {
+        groups.push({ name: item.category.name, projects: [item] });
+      }
+      return groups;
+    },
+    []
+  );
 
   return {
     props: {
-      projects: projectsGrouped,
+      projectsGrouped,
     },
     revalidate: 300 * 60, // 300 minutes
   };

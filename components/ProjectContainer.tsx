@@ -12,28 +12,34 @@ type Props = {
   bgImg: string | StaticImageData;
 };
 
-function ProjectContainer(props: Props): ReactElement {
+function ProjectContainer({
+  title,
+  link,
+  description,
+  stack,
+  bgImg,
+}: Props): ReactElement {
   const [hovered, setHovered] = useState<boolean>(false);
 
   function renderStack() {
-    return props.stack.map((technology: Technology, i: number) => (
+    return stack.map(({ color, name }: Technology, i: number) => (
       <div
         key={i}
         className={
           "border-2 pl-1 pr-1 rounded-xl z-10 hover:rounded-none transition-all duration-300 ease-out"
         }
         style={{
-          borderColor: technology.color.hex,
-          color: technology.color.hex,
+          borderColor: color.hex,
+          color: color.hex,
         }}
       >
-        {technology.name}
+        {name}
       </div>
     ));
   }
 
   return (
-    <Link href={props.link} scroll={false}>
+    <Link href={link} scroll={false}>
       <a>
         <button
           className={
@@ -47,7 +53,7 @@ function ProjectContainer(props: Props): ReactElement {
               (hovered && "blur absolute -z-10 h-full w-full opacity-80") ||
               "blur-0 absolute -z-10 h-full w-full opacity-80"
             }
-            src={props.bgImg}
+            src={bgImg}
             alt={""}
             layout={"fill"}
             placeholder={"blur"}
@@ -61,17 +67,15 @@ function ProjectContainer(props: Props): ReactElement {
               "flex flex-col justify-center items-center h-full gap-4 p-2"
             }
           >
-            {!hovered && props.title && (
+            {!hovered && (
               <h1 className={"text-color-primary tracking-wider text-2xl"}>
-                {props.title}
+                {title}
               </h1>
             )}
-            {hovered && props.description && (
-              <span className={"text-color-primary"}>{props.description}</span>
+            {hovered && (
+              <span className={"text-color-primary"}>{description}</span>
             )}
-            {hovered && props.stack && (
-              <div className={"flex gap-2"}>{renderStack()}</div>
-            )}
+            {hovered && <div className={"flex gap-2"}>{renderStack()}</div>}
           </div>
         </button>
       </a>
