@@ -14,3 +14,14 @@
 .bg-purple-light {
   background: #bb86fc;
 }
+
+.article {
+  h1,
+  h2,
+  h3,
+  h4 {
+    strong {
+      font-weight: bolder;
+    }
+  }
+}

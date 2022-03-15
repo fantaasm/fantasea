@@ -28,9 +28,9 @@ const BlogPost = ({ post, relatedPosts }: Props): JSX.Element => {
     <Layout title={post.headerTitle} description={post.excerpt}>
       <ArticleHeader image={post.featuredImage} headerText={post.headerTitle} />
 
-      <div className="container mx-auto grid grid-cols-5 gap-12 mt-8">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-4 gap-0 sm:gap-2 md:gap-8 lg:gap-12 mt-8">
         <div>
-          <div className="relative lg:sticky top-8">
+          <div className="relative md:sticky sm:top-8 overflow-hidden mb-6 sm:mb-0">
             <ArticleLinks
               className={"my-4 sm:mt-1 text-2xl"}
               links={relatedPosts}
@@ -41,15 +41,15 @@ const BlogPost = ({ post, relatedPosts }: Props): JSX.Element => {
             )}`}</div> */}
           </div>
         </div>
-        <div className="col-span-3 place-content-center content-center justify-center mx-auto">
+        <div className="col-span-3 md:col-span-2 mx-auto">
           <article
-            className={"prose prose-invert prose-xl px-1 md:px-2 w-full"}
+            className={"prose prose-invert prose-xl px-1 md:px-2 article"}
           >
             {parse(post.content.html)}
           </article>
         </div>
         <div>
-          <div className="relative lg:sticky top-8">
+          <div className="hidden md:block relative md:sticky top-8">
             <div>
               <p>On this page:</p>
               <p>Coming soon</p>

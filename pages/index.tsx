@@ -46,6 +46,9 @@ const Home = ({ projectsGrouped }: Props): JSX.Element => {
           className={
             "p-8 text-center text-xl md:text-3xl  bg-lightDark bg-opacity-75 rounded-xl flex flex-col gap-2"
           }
+          // className={
+          //   "p-8 text-center text-xl md:text-3xl bg-gray-700 bg-opacity-75 rounded-xl flex flex-col gap-2"
+          // }
         >
           <span>I&apos;m fantasm, and I am a passionate dev from Poland</span>
           <span>

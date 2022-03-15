@@ -9,22 +9,21 @@ type Props = {
 
 const ArticleHeader = ({ image, headerText }: Props): JSX.Element => {
   return (
-    <header className="w-full relative">
+    <header className="w-full h-40 sm:h-72 relative">
       <Image
         src={image.url}
         alt="header-image"
-        layout={"responsive"}
-        width={1900}
-        height={350}
+        layout={"fill"}
+        objectFit="cover"
         quality={100}
         placeholder={"blur"}
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
       />
       <div className="absolute h-16 pointer-events-none bottom-0 z-20 w-full bg-gradient-to-t from-dark" />
       <div className={"absolute bottom-0 left-0 w-full h-16 bg-blur"} />
-      <div className={"absolute left-12 bottom-4 md:bottom-8 "}>
+      <div className={"absolute left-4 sm:left-12 bottom-4 md:bottom-8 "}>
         <Link href="/" scroll={false}>
-          <a className={"hidden sm:block opacity-50 hover:opacity-100"}>Back</a>
+          <a className={"opacity-50 hover:opacity-100"}>Back</a>
         </Link>
         <h3
           className={

@@ -27,6 +27,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
+        {/* <body className="font-roboto bg-gray-800 text-white antialiased"> */}
         <body className="font-roboto bg-dark text-white antialiased">
           <Main />
           <NextScript />
