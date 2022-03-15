@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import Image from "next/image";
-import { Technology } from "../types/article";
+import { Technology } from "../types/types";
 import Link from "next/link";
 import { shimmer, toBase64 } from "../services/imageHelper";
 

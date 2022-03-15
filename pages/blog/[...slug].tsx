@@ -1,4 +1,4 @@
-import { ArticlePage } from "../../types/article";
+import { ArticlePage } from "../../types/types";
 import Layout from "../../components/Layout";
 import ArticleHeader from "../../components/ArticleHeader";
 import ArticleLinks from "../../components/ArticleLinks";
@@ -75,13 +75,12 @@ export async function getStaticProps({ params }) {
       post: data.post,
       relatedPosts: data.posts,
     },
-    revalidate: 7200,
+    revalidate: 240 * 60, // 240 mins
   };
 }
 
 export async function getStaticPaths() {
   const posts = await getPosts();
-  console.log(posts);
 
   return {
     // paths: posts.map(({ node: { slug } }) => ({ params: { slug } })), // this is for [slug] class name

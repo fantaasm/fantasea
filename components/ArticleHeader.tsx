@@ -20,7 +20,7 @@ const ArticleHeader = ({ image, headerText }: Props): JSX.Element => {
         placeholder={"blur"}
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
       />
-      <div className="h-16 pointer-events-none fixed bottom-0 z-20 w-full bg-gradient-to-t from-dark" />
+      <div className="absolute h-16 pointer-events-none bottom-0 z-20 w-full bg-gradient-to-t from-dark" />
       <div className={"absolute bottom-0 left-0 w-full h-16 bg-blur"} />
       <div className={"absolute left-12 bottom-4 md:bottom-8 "}>
         <Link href="/" scroll={false}>

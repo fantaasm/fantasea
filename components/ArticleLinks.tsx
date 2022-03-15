@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArticleLink } from "../types/article";
+import { ArticleLink } from "../types/types";
 
 type Props = {
   className?: string;
