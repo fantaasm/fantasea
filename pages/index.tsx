@@ -1,10 +1,9 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 import ProjectContainer from "../components/ProjectContainer";
 import React from "react";
 import { ResponsiveGrid } from "../components/ResponsiveGrid";
 import Layout from "../components/Layout";
-import { motion } from "framer-motion";
+import {domAnimation, LazyMotion, m} from "framer-motion"
 import SocialLinks from "../components/SocialLinks";
 import { getProjects } from "../services";
 import { Project } from "../types/types";
@@ -24,22 +23,23 @@ type Props = {
 const Home = ({ projectsGrouped }: Props): JSX.Element => {
   return (
     <Layout title={title} description={description}>
-      <main
-        className={
+      <main className={
           "flex flex-col gap-4 sm:p-4 mt-8 items-center content-center"
         }
       >
-        <motion.div
+        <LazyMotion features={domAnimation}>
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className={"text-4xl md:text-6xl"}
         >
           Hi
-        </motion.div>
+        </m.div>
+        </LazyMotion>
 
-        <motion.div
-          role="header"
+        <LazyMotion features={domAnimation}>
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -67,7 +67,8 @@ const Home = ({ projectsGrouped }: Props): JSX.Element => {
             </Link>
           </span>
           <span>Check out some things I&apos;ve done below or my blog</span>
-        </motion.div>
+        </m.div>
+        </LazyMotion>
 
         <div className={"border-b-2 border-white w-1/2 mt-4"} />
 

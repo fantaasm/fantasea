@@ -1,6 +1,6 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
-import { AnimatePresence } from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 import Head from "next/head";
 import React from "react";
 import { DefaultSeo } from "next-seo";
@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import FixedFadeToDark from "../components/FixedFadeToDark";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const url = `https://fantasm.vercel.app${router.route}`;
+  const url = `https://fantasea.pl${router.asPath}`;
 
   return (
     <>
@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
           locale: "en_IE",
           url,
           description: "The personal website for Fantasm, developer.",
-          site_name: "Fantasm | fantasm.vercel.app",
+          site_name: "Fantasm | fantasea.pl",
           images: [],
         }}
         canonical={url}

@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import Image from "next/image";
 import { Technology } from "../types/types";
 import Link from "next/link";
-import { shimmer, toBase64 } from "../services/imageHelper";
+import { shimmer, toBase64 } from "../services/imageUtils";
 
 type Props = {
   title: string;
@@ -57,7 +57,6 @@ function ProjectContainer({
             alt={""}
             layout={"fill"}
             placeholder={"blur"}
-            quality="100"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
               shimmer(700, 475)
             )}`}

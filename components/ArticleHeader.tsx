@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { shimmer, toBase64 } from "../services/imageHelper";
+import { shimmer, toBase64 } from "../services/imageUtils";
 
 type Props = {
   image: { url: string };
@@ -11,11 +11,11 @@ const ArticleHeader = ({ image, headerText }: Props): JSX.Element => {
   return (
     <header className="w-full h-40 sm:h-72 relative">
       <Image
+        priority={true}
         src={image.url}
         alt="header-image"
         layout={"fill"}
         objectFit="cover"
-        quality={100}
         placeholder={"blur"}
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
       />

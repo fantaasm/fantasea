@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import {domAnimation, LazyMotion, m} from "framer-motion";
 import { ReactNode } from "react";
 import { NextSeo } from "next-seo";
 
@@ -22,7 +22,8 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
         description={description}
         openGraph={{ title, description }}
       />
-      <motion.div
+      <LazyMotion features={domAnimation}>
+      <m.div
         initial="hidden"
         animate="enter"
         exit="exit"
@@ -30,7 +31,8 @@ const Layout = ({ children, title, description }: Props): JSX.Element => {
         transition={{ type: "linear" }}
       >
         {children}
-      </motion.div>
+      </m.div>
+      </LazyMotion>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import SocialLinks from "../components/SocialLinks";
-import Home from "../pages/index";
 import userEvent from "@testing-library/user-event";
 
 describe("Global", () => {

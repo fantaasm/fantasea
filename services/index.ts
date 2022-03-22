@@ -99,8 +99,5 @@ export const getPostDetails = async (slug: string) => {
     }
   `
   );
-
-  const response = await query({ slug, path: slug.split("/")[0] });
-
-  return response;
+  return await query({ slug, path: slug.split("/")[0] });
 };
