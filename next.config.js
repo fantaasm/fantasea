@@ -36,6 +36,7 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  staticPageGenerationTimeout: 300,
   devIndicators: {
     autoPrerender: false
   },

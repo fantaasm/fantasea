@@ -8,7 +8,7 @@ import SocialLinks from "../components/SocialLinks";
 import { getProjects } from "../services";
 import { Project } from "../types/types";
 
-const title = "About";
+const title = "Fantasea";
 const description = "Personal page for Fantasm, dev";
 
 type GroupedProject = {

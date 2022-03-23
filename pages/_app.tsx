@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import FixedFadeToDark from "../components/FixedFadeToDark";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
-  const url = `https://fantasea.pl${router.asPath}`;
+  const url = process.env.NEXT_PUBLIC_DOMAIN_NAME +router.asPath;
 
   return (
     <>
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <link rel="icon" type="image/png" href="/favIcon.png" />
       </Head>
       <DefaultSeo
-        titleTemplate="%s - Fantasm"
+        defaultTitle="Fantasea"
         openGraph={{
           type: "website",
           locale: "en_IE",
@@ -27,11 +27,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         }}
         canonical={url}
       />
-      <AnimatePresence
-        exitBeforeEnter
-        initial={true}
-        onExitComplete={() => window.scrollTo(0, 0)}
-      >
+      <AnimatePresence exitBeforeEnter initial={true} onExitComplete={() => window.scrollTo(0, 0)}>
         <Component {...pageProps} canonical={url} key={router.pathname} />
       </AnimatePresence>
       <Footer />
