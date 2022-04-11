@@ -1,3 +1,4 @@
+// @ts-ignore
 import graphql from "graphql.js";
 
 const graph = graphql(process.env.NEXT_PUBLIC_GRAPHCMS_API_ENDPOINT!, {
@@ -76,8 +77,10 @@ export const getPostDetails = async (slug: string) => {
         title
         headerTitle
         excerpt
-        featuredImage {
+       featuredImage {
           url
+          width
+          height
         }
         author {
           username
@@ -95,9 +98,40 @@ export const getPostDetails = async (slug: string) => {
           name
           slug
         }
+        contentLinks
+        seoTitle
       }
     }
   `
   );
   return await query({ slug, path: slug.split("/")[0] });
+};
+
+export const getRecentPosts = async (amount: number) => {
+  const query = graph.query(
+    `($amount: Int!) {
+      postsConnection(first: $amount, orderBy: createdAt_DESC) {
+        edges {
+          cursor
+          node {
+            createdAt
+            headerTitle
+            title
+            slug
+            excerpt
+            readTime
+            categories {
+              name
+              slug
+            }
+            featuredImage {
+              url(transformation: {image: {resize: {fit: crop, height: 220, width: 672}}})
+            }
+          }
+        }
+      }
+    }
+    `
+  );
+  return await query({ amount });
 };
