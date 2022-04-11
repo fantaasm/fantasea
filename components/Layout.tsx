@@ -1,38 +1,53 @@
-import {domAnimation, LazyMotion, m} from "framer-motion";
 import { ReactNode } from "react";
 import { NextSeo } from "next-seo";
+import { ArticlePage } from "../types";
+import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 
 type Props = {
   children: ReactNode;
   title: string;
   description: string;
+  article?: ArticlePage;
 };
 
-const variants = {
-  hidden: { opacity: 0, x: -200, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: -100 },
-};
+const DynamicScrollButton = dynamic(() => import("./ScrollUp"), { ssr: false });
 
-const Layout = ({ children, title, description }: Props): JSX.Element => {
+const Layout = ({ children, title, description, article }: Props): JSX.Element => {
   return (
     <>
       <NextSeo
         title={title}
         description={description}
-        openGraph={{ title, description }}
+        openGraph={{
+          title,
+          description,
+          ...(article && {
+            type: "article",
+            article: {
+              publishedTime: dayjs(article.createdAt).toISOString(),
+              modifiedTime: dayjs(article.updatedAt).toISOString(),
+              section: article.categories[0].name,
+              authors: [article.author.username],
+              tags: [
+                ...article.categories.map((category) => category.name),
+                article.title,
+                article.headerTitle,
+              ],
+            },
+            images: [
+              {
+                url: article.featuredImage.url,
+                alt: "article header image",
+                width: article.featuredImage.width,
+                height: article.featuredImage.height,
+              },
+            ],
+          }),
+        }}
       />
-      <LazyMotion features={domAnimation}>
-      <m.div
-        initial="hidden"
-        animate="enter"
-        exit="exit"
-        variants={variants}
-        transition={{ type: "linear" }}
-      >
-        {children}
-      </m.div>
-      </LazyMotion>
+      {children}
+      <DynamicScrollButton yOffset={1200} smoothingFactor={40} />
     </>
   );
 };
