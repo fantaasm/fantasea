@@ -2,30 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.font-roboto {
-  font-family: "Roboto", sans-serif;
-}
-
-@font-face {
-  font-display: optional;
-}
-
 .bg-blur {
   backdrop-filter: blur(12px);
   mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
 }
 
-.bg-purple-light {
-  background: #bb86fc;
+:root {
+  color-scheme: dark;
 }
 
-.article {
-  h1,
-  h2,
-  h3,
-  h4 {
-    strong {
-      font-weight: bolder;
-    }
-  }
+.text-highlighted {
+  text-shadow: 0 0 6px #fff, 0 0 2px #0fa;
 }
