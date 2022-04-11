@@ -10,11 +10,12 @@ module.exports = {
     extend: {
       backgroundImage: {},
       fontFamily: {
-        roboto: ["Roboto"],
+        "playfair-display": ["Playfair Display, serif;"],
       },
       colors: {
+        dark: "#090909",
+        "white-100": "#F5F6F7",
         lightPurple: "#BB86FC",
-        dark: "#1A1A1A",
         lightDark: "#2C2C2C",
       },
     },
