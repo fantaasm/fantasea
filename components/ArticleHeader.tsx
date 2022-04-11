@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { shimmer, toBase64 } from "../services/imageUtils";
+import { blurredShimmer } from "../services/imageUtils";
 
 type Props = {
   image: { url: string };
@@ -11,13 +11,13 @@ const ArticleHeader = ({ image, headerText }: Props): JSX.Element => {
   return (
     <header className="w-full h-40 sm:h-72 relative">
       <Image
-        priority={true}
+        priority
         src={image.url}
         alt="header-image"
         layout={"fill"}
         objectFit="cover"
         placeholder={"blur"}
-        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+        blurDataURL={blurredShimmer(700, 475)}
       />
       <div className="absolute h-16 pointer-events-none bottom-0 z-20 w-full bg-gradient-to-t from-dark" />
       <div className={"absolute bottom-0 left-0 w-full h-16 bg-blur"} />
@@ -25,13 +25,13 @@ const ArticleHeader = ({ image, headerText }: Props): JSX.Element => {
         <Link href="/" scroll={false}>
           <a className={"opacity-50 hover:opacity-100"}>Back</a>
         </Link>
-        <h3
+        <h1
           className={
             "text-2xl sm:text-5xl tracking-wider underline underline-offset-8 decoration-1 decoration-sky-200"
           }
         >
           {headerText}
-        </h3>
+        </h1>
       </div>
     </header>
   );
