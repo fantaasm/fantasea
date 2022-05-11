@@ -2,8 +2,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
-const withPreact = require("next-plugin-preact");
-
 /**
  * @type {import('next').NextConfig}
  */
@@ -25,12 +23,11 @@ const nextConfig = {
   },
   images: {
     domains: ["media.graphassets.com", "media.graphcms.com"],
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp"],
   },
   typescript: {
     ignoreBuildErrors: true,
   },
 };
 
-module.exports = withPreact(nextConfig);
-// module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withBundleAnalyzer(nextConfig);
